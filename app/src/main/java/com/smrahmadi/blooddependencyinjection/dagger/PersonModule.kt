@@ -6,13 +6,12 @@ import com.smrahmadi.blooddependencyinjection.person.blood.*
 import dagger.Module
 import dagger.Provides
 import java.util.*
-import javax.inject.Singleton
 
 @Module
-class PersonModule {
+class PersonModule(private var personName: String) {
 
     @Provides
-    fun providePerson(body: Body): Person = Person(body)
+    fun providePerson(body: Body): Person = Person(personName, body)
 
     @Provides
     fun provideBody(blood: Blood): Body = Body(blood)
